@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caption Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="title">
+            Image Caption Generator
+        </h1>
+
+        <div class="result-box">
+
+            <div class="image-section">
+
+                <h2>Image Preview</h2>
+
+                <img src="{{ image_path }}"
+                     alt="Uploaded Image">
+
+            </div>
+
+            <div class="caption-section">
+
+                <h2>Generated Caption</h2>
+
+                <p id="caption">
+                    {{ caption }}
+                </p>
+
+                <button onclick="copyCaption()">
+                    Copy Caption
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="back-btn">
+
+            <a href="/">
+                Generate Another Caption
+            </a>
+
+        </div>
+
+    </div>
+
+<script>
+
+function copyCaption() {
+
+    let caption =
+        document.getElementById("caption").innerText;
+
+    navigator.clipboard.writeText(caption);
+
+    alert("Caption copied successfully!");
+
+}
+
+</script>
+
+</body>
+</html>
